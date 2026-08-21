@@ -1,39 +1,145 @@
-/* =========================================
-   BIRTHDAY WEBSITE — AZKA
-========================================= */
+/* =========================================================
+   MIDNIGHT BLOOM
+   SCRIPT.JS
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================
-       ELEMENTS
-    ====================================== */
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
 
-    const opening = document.getElementById("opening");
-    const startButton = document.getElementById("startButton");
-    const mainContent = document.getElementById("mainContent");
+const openingScreen =
+    document.getElementById("openingScreen");
 
-    const menuSection = document.getElementById("menuSection");
+const mainWebsite =
+    document.getElementById("mainWebsite");
 
-    const contentSections = document.querySelectorAll(
-        ".content-section"
+const startButton =
+    document.getElementById("startButton");
+
+const menuSection =
+    document.getElementById("menuSection");
+
+const menuCards =
+    document.querySelectorAll(".menu-card");
+
+const contentSections =
+    document.querySelectorAll(".content-section");
+
+const backButtons =
+    document.querySelectorAll(".back-button");
+
+const mouseGlow =
+    document.getElementById("mouseGlow");
+
+const particlesContainer =
+    document.getElementById("particles");
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+function createParticles() {
+
+    if (!particlesContainer) {
+        return;
+    }
+
+    const particleCount =
+        window.innerWidth < 600
+            ? 35
+            : 65;
+
+    for (let i = 0; i < particleCount; i++) {
+
+        const particle =
+            document.createElement("span");
+
+        particle.className = "particle";
+
+        const size =
+            Math.random() * 2 + 1;
+
+        const left =
+            Math.random() * 100;
+
+        const duration =
+            Math.random() * 18 + 12;
+
+        const delay =
+            Math.random() * -20;
+
+        particle.style.width =
+            `${size}px`;
+
+        particle.style.height =
+            `${size}px`;
+
+        particle.style.left =
+            `${left}%`;
+
+        particle.style.animationDuration =
+            `${duration}s`;
+
+        particle.style.animationDelay =
+            `${delay}s`;
+
+        particle.style.opacity =
+            `${Math.random() * 0.6 + 0.2}`;
+
+        particlesContainer.appendChild(
+            particle
+        );
+    }
+}
+
+createParticles();
+
+
+/* =========================================================
+   MOUSE GLOW
+========================================================= */
+
+if (window.matchMedia("(pointer: fine)").matches) {
+
+    document.addEventListener(
+        "mousemove",
+        (event) => {
+
+            mouseGlow.style.left =
+                `${event.clientX}px`;
+
+            mouseGlow.style.top =
+                `${event.clientY}px`;
+
+            mouseGlow.style.opacity =
+                "1";
+
+        }
     );
 
-    const menuCards = document.querySelectorAll(
-        ".menu-card"
+    document.addEventListener(
+        "mouseleave",
+        () => {
+
+            mouseGlow.style.opacity =
+                "0";
+
+        }
     );
-
-    const backButtons = document.querySelectorAll(
-        ".back-button"
-    );
+}
 
 
-    /* =====================================
-       OPENING SCREEN
-    ====================================== */
+/* =========================================================
+   OPENING SCREEN
+========================================================= */
 
-    let websiteStarted = false;
+let websiteStarted = false;
 
-    startButton.addEventListener("click", () => {
+startButton.addEventListener(
+    "click",
+    () => {
 
         if (websiteStarted) {
             return;
@@ -41,607 +147,607 @@ document.addEventListener("DOMContentLoaded", () => {
 
         websiteStarted = true;
 
-        opening.classList.add("hide");
+        openingScreen.classList.add("hide");
 
-        setTimeout(() => {
-
-            mainContent.classList.add("visible");
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }, 500);
-
-    });
-
-
-    /* =====================================
-       FLOATING PARTICLES
-    ====================================== */
-
-    const particlesContainer =
-        document.getElementById("particles");
-
-    function createParticles() {
-
-        const amount =
-            window.innerWidth < 600 ? 35 : 65;
-
-        for (let i = 0; i < amount; i++) {
-
-            const particle =
-                document.createElement("span");
-
-            particle.className = "particle";
-
-            const size =
-                Math.random() * 2 + 1;
-
-            particle.style.width =
-                `${size}px`;
-
-            particle.style.height =
-                `${size}px`;
-
-            particle.style.left =
-                `${Math.random() * 100}%`;
-
-            particle.style.animationDuration =
-                `${Math.random() * 15 + 10}s`;
-
-            particle.style.animationDelay =
-                `${Math.random() * 15}s`;
-
-            particle.style.opacity =
-                `${Math.random() * 0.5 + 0.2}`;
-
-            particlesContainer.appendChild(
-                particle
-            );
-        }
-    }
-
-    createParticles();
-
-
-    /* =====================================
-       MOUSE GLOW
-    ====================================== */
-
-    const mouseGlow =
-        document.querySelector(".mouse-glow");
-
-    const supportsHover =
-        window.matchMedia(
-            "(hover: hover)"
-        ).matches;
-
-    if (supportsHover) {
-
-        document.addEventListener(
-            "mousemove",
-            (event) => {
-
-                mouseGlow.style.left =
-                    `${event.clientX}px`;
-
-                mouseGlow.style.top =
-                    `${event.clientY}px`;
-
-                mouseGlow.style.opacity = "1";
-            }
-        );
-
-        document.addEventListener(
-            "mouseleave",
+        setTimeout(
             () => {
 
-                mouseGlow.style.opacity = "0";
-
-            }
-        );
-
-    }
-
-
-    /* =====================================
-       REAL-TIME AGE COUNTER
-    ====================================== */
-
-    const birthDate =
-        new Date(
-            2010,
-            8,
-            3,
-            0,
-            0,
-            0
-        );
-
-    const yearsElement =
-        document.getElementById("years");
-
-    const monthsElement =
-        document.getElementById("months");
-
-    const daysElement =
-        document.getElementById("days");
-
-    const hoursElement =
-        document.getElementById("hours");
-
-    const minutesElement =
-        document.getElementById("minutes");
-
-    const secondsElement =
-        document.getElementById("seconds");
-
-
-    function getCalendarDifference(start, end) {
-
-        let years =
-            end.getFullYear() -
-            start.getFullYear();
-
-        let months =
-            end.getMonth() -
-            start.getMonth();
-
-        let days =
-            end.getDate() -
-            start.getDate();
-
-        let hours =
-            end.getHours() -
-            start.getHours();
-
-        let minutes =
-            end.getMinutes() -
-            start.getMinutes();
-
-        let seconds =
-            end.getSeconds() -
-            start.getSeconds();
-
-
-        if (seconds < 0) {
-
-            seconds += 60;
-            minutes--;
-
-        }
-
-
-        if (minutes < 0) {
-
-            minutes += 60;
-            hours--;
-
-        }
-
-
-        if (hours < 0) {
-
-            hours += 24;
-            days--;
-
-        }
-
-
-        if (days < 0) {
-
-            months--;
-
-            const previousMonth =
-                new Date(
-                    end.getFullYear(),
-                    end.getMonth(),
-                    0
+                mainWebsite.classList.remove(
+                    "hidden"
                 );
 
-            days +=
-                previousMonth.getDate();
+                window.scrollTo({
+                    top: 0,
+                    behavior: "instant"
+                });
 
-        }
-
-
-        if (months < 0) {
-
-            months += 12;
-            years--;
-
-        }
-
-
-        return {
-            years,
-            months,
-            days,
-            hours,
-            minutes,
-            seconds
-        };
+            },
+            700
+        );
 
     }
+);
 
 
-    function updateCounter() {
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-        const now =
-            new Date();
+function hideAllSections() {
 
-        const difference =
-            getCalendarDifference(
-                birthDate,
-                now
+    contentSections.forEach(
+        (section) => {
+
+            section.classList.remove(
+                "active"
             );
 
+        }
+    );
+}
 
-        yearsElement.textContent =
-            difference.years;
+function showMenu() {
 
-        monthsElement.textContent =
-            difference.months;
+    hideAllSections();
 
-        daysElement.textContent =
-            difference.days;
+    menuSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 
-        hoursElement.textContent =
-            String(
-                difference.hours
-            ).padStart(2, "0");
+}
 
-        minutesElement.textContent =
-            String(
-                difference.minutes
-            ).padStart(2, "0");
+function showSection(sectionId) {
 
-        secondsElement.textContent =
-            String(
-                difference.seconds
-            ).padStart(2, "0");
+    hideAllSections();
 
+    const section =
+        document.getElementById(sectionId);
+
+    if (!section) {
+        return;
     }
 
+    section.classList.add("active");
 
-    updateCounter();
+    setTimeout(
+        () => {
 
-    setInterval(
-        updateCounter,
-        1000
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        },
+        30
     );
 
+    if (sectionId === "endingSection") {
+        startEndingAnimation();
+    }
 
-    /* =====================================
-       SECTION NAVIGATION
-    ====================================== */
+}
 
-    function closeAllSections() {
+menuCards.forEach(
+    (card) => {
 
-        contentSections.forEach(
-            (section) => {
+        card.addEventListener(
+            "click",
+            () => {
 
-                section.classList.add(
-                    "hidden-section"
-                );
+                const target =
+                    card.dataset.target;
 
-                section.classList.remove(
-                    "entering"
-                );
+                showSection(target);
 
             }
         );
 
     }
+);
 
 
-    function showSection(sectionId) {
+backButtons.forEach(
+    (button) => {
 
-        const target =
-            document.getElementById(
-                sectionId
-            );
+        button.addEventListener(
+            "click",
+            () => {
 
-        if (!target) {
+                showMenu();
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE TO MENU
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key !== "Escape") {
             return;
         }
 
+        const activeSection =
+            document.querySelector(
+                ".content-section.active"
+            );
 
-        closeAllSections();
+        if (activeSection) {
+            showMenu();
+        }
 
-        menuSection.style.display =
-            "none";
+    }
+);
 
 
-        target.classList.remove(
-            "hidden-section"
+/* =========================================================
+   REAL-TIME COUNTER
+========================================================= */
+
+const startDate =
+    new Date(
+        2010,
+        8,
+        3,
+        0,
+        0,
+        0
+    );
+
+const yearsElement =
+    document.getElementById("years");
+
+const monthsElement =
+    document.getElementById("months");
+
+const daysElement =
+    document.getElementById("days");
+
+const hoursElement =
+    document.getElementById("hours");
+
+const minutesElement =
+    document.getElementById("minutes");
+
+const secondsElement =
+    document.getElementById("seconds");
+
+
+function daysInMonth(
+    year,
+    month
+) {
+
+    return new Date(
+        year,
+        month + 1,
+        0
+    ).getDate();
+
+}
+
+
+function calculateAge(
+    start,
+    now
+) {
+
+    let years =
+        now.getFullYear() -
+        start.getFullYear();
+
+    let months =
+        now.getMonth() -
+        start.getMonth();
+
+    let days =
+        now.getDate() -
+        start.getDate();
+
+    let hours =
+        now.getHours() -
+        start.getHours();
+
+    let minutes =
+        now.getMinutes() -
+        start.getMinutes();
+
+    let seconds =
+        now.getSeconds() -
+        start.getSeconds();
+
+
+    if (seconds < 0) {
+
+        seconds += 60;
+
+        minutes--;
+
+    }
+
+
+    if (minutes < 0) {
+
+        minutes += 60;
+
+        hours--;
+
+    }
+
+
+    if (hours < 0) {
+
+        hours += 24;
+
+        days--;
+
+    }
+
+
+    if (days < 0) {
+
+        const previousMonth =
+            new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                0
+            );
+
+        days +=
+            previousMonth.getDate();
+
+        months--;
+
+    }
+
+
+    if (months < 0) {
+
+        months += 12;
+
+        years--;
+
+    }
+
+
+    return {
+        years,
+        months,
+        days,
+        hours,
+        minutes,
+        seconds
+    };
+
+}
+
+
+function updateCounter() {
+
+    const now =
+        new Date();
+
+    if (now < startDate) {
+
+        yearsElement.textContent = "0";
+        monthsElement.textContent = "0";
+        daysElement.textContent = "0";
+        hoursElement.textContent = "0";
+        minutesElement.textContent = "0";
+        secondsElement.textContent = "0";
+
+        return;
+    }
+
+    const result =
+        calculateAge(
+            startDate,
+            now
         );
 
-        target.classList.add(
-            "entering"
+    yearsElement.textContent =
+        result.years;
+
+    monthsElement.textContent =
+        result.months;
+
+    daysElement.textContent =
+        result.days;
+
+    hoursElement.textContent =
+        String(result.hours).padStart(
+            2,
+            "0"
         );
 
+    minutesElement.textContent =
+        String(result.minutes).padStart(
+            2,
+            "0"
+        );
 
-        requestAnimationFrame(() => {
+    secondsElement.textContent =
+        String(result.seconds).padStart(
+            2,
+            "0"
+        );
+}
 
-            requestAnimationFrame(() => {
+updateCounter();
 
-                target.classList.remove(
-                    "entering"
+setInterval(
+    updateCounter,
+    1000
+);
+
+
+/* =========================================================
+   10 HAL KECIL
+========================================================= */
+
+const littleThings = [
+
+    "Kamu pantas untuk dirayakan.",
+
+    "Kamu lebih spesial daripada yang mungkin kamu sadari.",
+
+    "Semoga kamu tidak pernah lupa betapa berharganya dirimu.",
+
+    "Kamu pantas dikelilingi orang-orang yang menghargaimu.",
+
+    "Semoga tahun ini membawamu semakin dekat dengan impianmu.",
+
+    "Senyummu bisa membuat momen biasa terasa sedikit lebih baik.",
+
+    "Semoga kamu terus menjadi seseorang yang ingin kamu banggakan.",
+
+    "Masih banyak momen indah yang sedang menunggumu.",
+
+    "Semoga kamu selalu punya alasan untuk bangga pada dirimu sendiri.",
+
+    "Dan yang paling penting, semoga kamu bahagia. 💙"
+
+];
+
+let littleIndex = 0;
+
+const littleNumber =
+    document.getElementById(
+        "littleNumber"
+    );
+
+const littleText =
+    document.getElementById(
+        "littleText"
+    );
+
+const nextLittleThing =
+    document.getElementById(
+        "nextLittleThing"
+    );
+
+
+function showLittleThing() {
+
+    littleText.classList.add(
+        "changing"
+    );
+
+    setTimeout(
+        () => {
+
+            littleText.textContent =
+                littleThings[littleIndex];
+
+            littleNumber.textContent =
+                String(
+                    littleIndex + 1
+                ).padStart(
+                    2,
+                    "0"
                 );
 
-            });
+            littleText.classList.remove(
+                "changing"
+            );
 
-        });
+        },
+        400
+    );
+}
 
+nextLittleThing.addEventListener(
+    "click",
+    () => {
 
-        setTimeout(() => {
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }, 50);
-
+        littleIndex++;
 
         if (
-            sectionId ===
-            "endingSection"
+            littleIndex >=
+            littleThings.length
         ) {
-
-            resetEndingAnimation();
-
-            setTimeout(() => {
-                startEndingAnimation();
-            }, 400);
-
+            littleIndex = 0;
         }
+
+        showLittleThing();
 
     }
+);
 
 
-    function showMenu() {
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
 
-        closeAllSections();
+const audioPlayer =
+    document.getElementById(
+        "audioPlayer"
+    );
 
-        menuSection.style.display =
-            "block";
+const musicCards =
+    document.querySelectorAll(
+        ".music-card"
+    );
 
+const songs = [
 
-        setTimeout(() => {
+    {
+        title:
+            "Shape of My Heart",
 
-            menuSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        artist:
+            "Backstreet Boys",
 
-        }, 50);
+        src:
+            "music/shape-of-my-heart.mp3"
+    },
 
+    {
+        title:
+            "I Lay My Love on You",
+
+        artist:
+            "Westlife",
+
+        src:
+            "music/i-lay-my-love-on-you.mp3"
     }
 
+];
 
-    menuCards.forEach(
-        (card) => {
-
-            card.addEventListener(
-                "click",
-                () => {
-
-                    const target =
-                        card.dataset.target;
-
-                    showSection(target);
-
-                }
-            );
-
-        }
-    );
+let currentSong =
+    -1;
 
 
-    backButtons.forEach(
-        (button) => {
+function updateMusicCards() {
 
-            button.addEventListener(
-                "click",
-                () => {
+    musicCards.forEach(
+        (card, index) => {
 
-                    showMenu();
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================
-       ESCAPE = KEMBALI KE MENU
-    ====================================== */
-
-    document.addEventListener(
-        "keydown",
-        (event) => {
+            const button =
+                card.querySelector(
+                    ".play-button"
+                );
 
             if (
-                event.key === "Escape"
+                index === currentSong &&
+                !audioPlayer.paused
             ) {
 
-                const visibleSection =
-                    [...contentSections]
-                    .find(
-                        (section) =>
-                            !section.classList.contains(
-                                "hidden-section"
-                            )
-                    );
+                card.classList.add(
+                    "playing"
+                );
 
-                if (visibleSection) {
+                button.textContent =
+                    "Ⅱ";
 
-                    showMenu();
+            } else {
 
-                }
+                card.classList.remove(
+                    "playing"
+                );
+
+                button.textContent =
+                    "▶";
 
             }
 
         }
     );
 
-
-    /* =====================================
-       10 LITTLE THINGS
-       VERSI BAHASA INDONESIA
-    ====================================== */
-
-    const littleThings = [
-
-        "Kamu pantas untuk dirayakan.",
-
-        "Kamu jauh lebih istimewa daripada yang kamu sadari.",
-
-        "Aku harap kamu tidak pernah lupa betapa berharganya dirimu.",
-
-        "Kamu pantas dikelilingi orang-orang yang menghargaimu.",
-
-        "Aku harap tahun ini membawamu semakin dekat dengan cita-citamu.",
-
-        "Senyummu bisa membuat momen sederhana terasa lebih baik.",
-
-        "Aku harap kamu terus menjadi seseorang yang ingin kamu banggakan.",
-
-        "Masih banyak momen indah yang menunggumu di depan sana.",
-
-        "Aku harap kamu selalu punya alasan untuk bangga pada dirimu sendiri.",
-
-        "Dan yang paling penting, aku harap kamu bahagia. 💙"
-
-    ];
+}
 
 
-    let currentThing = 0;
+function playSong(index) {
 
+    if (
+        currentSong === index &&
+        !audioPlayer.paused
+    ) {
 
-    const thingNumber =
-        document.getElementById(
-            "thingNumber"
-        );
+        audioPlayer.pause();
 
-    const thingText =
-        document.getElementById(
-            "thingText"
-        );
+        updateMusicCards();
 
-    const nextThingButton =
-        document.getElementById(
-            "nextThingButton"
-        );
+        return;
+    }
 
+    currentSong = index;
 
-    nextThingButton.addEventListener(
-        "click",
-        () => {
+    audioPlayer.src =
+        songs[index].src;
 
-            thingText.classList.add(
-                "changing"
-            );
+    audioPlayer.load();
 
+    audioPlayer.play()
+        .then(
+            () => {
 
-            setTimeout(() => {
+                updateMusicCards();
 
-                currentThing++;
+            }
+        )
+        .catch(
+            () => {
 
+                updateMusicCards();
 
-                if (
-                    currentThing >=
-                    littleThings.length
-                ) {
-
-                    currentThing = 0;
-
-                }
-
-
-                thingNumber.textContent =
-                    `${String(currentThing + 1).padStart(2, "0")} / 10`;
-
-
-                thingText.textContent =
-                    littleThings[currentThing];
-
-
-                thingText.classList.remove(
-                    "changing"
+                console.warn(
+                    "Musik belum bisa diputar. Pastikan file ada di folder music/."
                 );
 
-            }, 320);
-
-        }
-    );
-
-
-    /* =====================================
-       MUSIC PLAYER
-    ====================================== */
-
-    const audioPlayer =
-        document.getElementById(
-            "audioPlayer"
+            }
         );
 
-    const musicStatus =
-        document.getElementById(
-            "musicStatus"
+}
+
+
+musicCards.forEach(
+    (card, index) => {
+
+        const button =
+            card.querySelector(
+                ".play-button"
+            );
+
+        button.addEventListener(
+            "click",
+            (event) => {
+
+                event.stopPropagation();
+
+                playSong(index);
+
+            }
         );
 
-    const songCards =
-        document.querySelectorAll(
-            ".song-card"
-        );
-
-    const playButtons =
-        document.querySelectorAll(
-            ".play-button"
-        );
+    }
+);
 
 
-    const songs = {
+audioPlayer.addEventListener(
+    "play",
+    updateMusicCards
+);
 
-        shape: {
+audioPlayer.addEventListener(
+    "pause",
+    updateMusicCards
+);
 
-            title: "Shape of My Heart",
+audioPlayer.addEventListener(
+    "ended",
+    () => {
 
-            artist: "Backstreet Boys",
-
-            src:
-                "music/shape-of-my-heart.mp3"
-
-        },
-
-        lay: {
-
-            title:
-                "I Lay My Love on You",
-
-            artist:
-                "Westlife",
-
-            src:
-                "music/i-lay-my-love-on-you.mp3"
-
-        }
-
-    };
-
-
-    let currentSong = null;
-
-
-    function resetSongCards() {
-
-        songCards.forEach(
+        musicCards.forEach(
             (card) => {
 
                 card.classList.remove(
@@ -651,451 +757,1049 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
+        currentSong = -1;
 
-        playButtons.forEach(
-            (button) => {
+        updateMusicCards();
 
-                button.textContent =
-                    "▶";
+    }
+);
 
-            }
+
+/* =========================================================
+   SURPRISE — BLUE WHITE FLOWERS
+========================================================= */
+
+const openGift =
+    document.getElementById(
+        "openGift"
+    );
+
+const gift =
+    document.getElementById(
+        "gift"
+    );
+
+const flowerContainer =
+    document.getElementById(
+        "flowerContainer"
+    );
+
+const surpriseMessage =
+    document.getElementById(
+        "surpriseMessage"
+    );
+
+
+function createFlower(
+    x,
+    y,
+    scale,
+    delay,
+    angle
+) {
+
+    const flower =
+        document.createElement(
+            "div"
+        );
+
+    flower.className =
+        "flower";
+
+    flower.style.setProperty(
+        "--x",
+        `${x}px`
+    );
+
+    flower.style.setProperty(
+        "--y",
+        `${y}px`
+    );
+
+    flower.style.setProperty(
+        "--scale",
+        scale
+    );
+
+    flower.style.setProperty(
+        "--delay",
+        `${delay}s`
+    );
+
+    flower.style.setProperty(
+        "--angle",
+        `${angle}deg`
+    );
+
+
+    const stem =
+        document.createElement(
+            "div"
+        );
+
+    stem.className =
+        "flower-stem";
+
+    stem.style.setProperty(
+        "--stem-rotation",
+        `${angle / 3}deg`
+    );
+
+
+    flower.appendChild(
+        stem
+    );
+
+
+    const petalCount = 6;
+
+    for (
+        let i = 0;
+        i < petalCount;
+        i++
+    ) {
+
+        const petal =
+            document.createElement(
+                "div"
+            );
+
+        petal.className =
+            "flower-petal";
+
+        petal.style.setProperty(
+            "--rotation",
+            `${i * 60}deg`
+        );
+
+        flower.appendChild(
+            petal
         );
 
     }
 
 
-    function playSong(songId) {
+    const center =
+        document.createElement(
+            "div"
+        );
 
-        const song =
-            songs[songId];
+    center.className =
+        "flower-center";
 
-        if (!song) {
-            return;
-        }
-
-
-        /*
-         * Jika lagu yang sama sedang
-         * diputar → pause.
-         */
-
-        if (
-            currentSong === songId &&
-            !audioPlayer.paused
-        ) {
-
-            audioPlayer.pause();
-
-            resetSongCards();
-
-            musicStatus.textContent =
-                `Paused — ${song.title}`;
-
-            return;
-
-        }
+    flower.appendChild(
+        center
+    );
 
 
-        /*
-         * Jika memilih lagu berbeda,
-         * ganti source audio.
-         */
+    flowerContainer.appendChild(
+        flower
+    );
 
-        if (
-            currentSong !== songId
-        ) {
-
-            audioPlayer.src =
-                song.src;
-
-            currentSong =
-                songId;
-
-        }
+}
 
 
-        audioPlayer.play()
-            .then(() => {
+function createFlowerExplosion() {
 
-                resetSongCards();
+    flowerContainer.innerHTML =
+        "";
 
-
-                const card =
-                    document.querySelector(
-                        `.song-card[data-song="${songId}"]`
-                    );
-
-
-                const button =
-                    document.querySelector(
-                        `.play-button[data-song="${songId}"]`
-                    );
+    const flowerCount =
+        window.innerWidth < 600
+            ? 34
+            : 50;
 
 
-                if (card) {
+    for (
+        let i = 0;
+        i < flowerCount;
+        i++
+    ) {
 
-                    card.classList.add(
-                        "playing"
-                    );
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
 
-                }
+        const distance =
+            Math.random() *
+            360 +
+            80;
 
+        const x =
+            Math.cos(angle) *
+            distance;
 
-                if (button) {
+        const y =
+            Math.sin(angle) *
+            distance;
 
-                    button.textContent =
-                        "Ⅱ";
+        const scale =
+            Math.random() *
+            0.6 +
+            0.45;
 
-                }
+        const delay =
+            Math.random() *
+            1.1;
 
+        const rotation =
+            Math.random() *
+            360 -
+            180;
 
-                musicStatus.textContent =
-                    `Now playing — ${song.title}`;
-
-            })
-            .catch(() => {
-
-                resetSongCards();
-
-
-                musicStatus.textContent =
-                    `File musik belum ditemukan: ${song.src}`;
-
-            });
+        createFlower(
+            x,
+            y,
+            scale,
+            delay,
+            rotation
+        );
 
     }
 
 
-    playButtons.forEach(
-        (button) => {
+    /* Extra small flowers around screen */
 
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const songId =
-                        button.dataset.song;
-
-                    playSong(songId);
-
-                }
-            );
-
-        }
-    );
-
-
-    /*
-     * Ketika lagu selesai.
-     */
-
-    audioPlayer.addEventListener(
-        "ended",
+    setTimeout(
         () => {
 
-            resetSongCards();
+            const extraCount =
+                window.innerWidth < 600
+                    ? 15
+                    : 25;
 
-            musicStatus.textContent =
-                "Song finished.";
-
-            currentSong = null;
-
-        }
-    );
-
-
-    /*
-     * Ketika audio di-pause.
-     */
-
-    audioPlayer.addEventListener(
-        "pause",
-        () => {
-
-            if (
-                currentSong !== null
+            for (
+                let i = 0;
+                i < extraCount;
+                i++
             ) {
 
-                const song =
-                    songs[currentSong];
+                const x =
+                    Math.random() *
+                    window.innerWidth -
+                    window.innerWidth / 2;
 
-                musicStatus.textContent =
-                    `Paused — ${song.title}`;
+                const y =
+                    Math.random() *
+                    window.innerHeight -
+                    window.innerHeight / 2;
+
+                const scale =
+                    Math.random() *
+                    0.35 +
+                    0.25;
+
+                createFlower(
+                    x,
+                    y,
+                    scale,
+                    Math.random(),
+                    Math.random() * 360
+                );
 
             }
 
-        }
+        },
+        700
     );
 
+}
 
-    /* =====================================
-       SURPRISE / KEJUTAN
-    ====================================== */
 
-    const gift =
-        document.getElementById(
-            "gift"
+let surpriseOpened =
+    false;
+
+
+openGift.addEventListener(
+    "click",
+    () => {
+
+        if (surpriseOpened) {
+            return;
+        }
+
+        surpriseOpened = true;
+
+        gift.classList.add(
+            "opening"
         );
 
-    const openGiftButton =
-        document.getElementById(
-            "openGiftButton"
-        );
-
-    const surpriseMessage =
-        document.getElementById(
-            "surpriseMessage"
-        );
-
-    const surpriseCard =
-        document.getElementById(
-            "surpriseCard"
-        );
-
-
-    let surpriseOpened = false;
-
-
-    openGiftButton.addEventListener(
-        "click",
-        () => {
-
-            if (surpriseOpened) {
-                return;
-            }
-
-
-            surpriseOpened = true;
-
-
-            /*
-             * Hadiah bergoyang.
-             */
-
-            gift.classList.add(
-                "shaking"
-            );
-
-
-            /*
-             * Setelah bergoyang,
-             * hadiah menghilang.
-             */
-
-            setTimeout(() => {
+        setTimeout(
+            () => {
 
                 gift.classList.add(
+                    "hide"
+                );
+
+                openGift.classList.add(
+                    "hide"
+                );
+
+                createFlowerExplosion();
+
+            },
+            750
+        );
+
+        setTimeout(
+            () => {
+
+                surpriseMessage.classList.remove(
                     "hidden"
                 );
 
-            }, 600);
-
-
-            /*
-             * Kemudian pesan muncul.
-             */
-
-            setTimeout(() => {
-
-                surpriseCard.classList.add(
-                    "opened"
-                );
-
-                surpriseMessage.classList.add(
-                    "show"
-                );
-
-            }, 900);
-
-        }
-    );
-
-
-    /* =====================================
-       ENDING ANIMATION
-    ====================================== */
-
-    const endingContent =
-        document.getElementById(
-            "endingContent"
+            },
+            1600
         );
 
-    const endingOne =
+    }
+);
+
+
+/* =========================================================
+   ENDING ANIMATION
+========================================================= */
+
+let endingAnimationPlayed =
+    false;
+
+
+function startEndingAnimation() {
+
+    if (endingAnimationPlayed) {
+        return;
+    }
+
+    endingAnimationPlayed = true;
+
+
+    const line1 =
         document.getElementById(
-            "endingOne"
+            "endingLine1"
         );
 
-    const endingTwo =
+    const line2 =
         document.getElementById(
-            "endingTwo"
+            "endingLine2"
         );
 
-    const endingThree =
+    const line3 =
         document.getElementById(
-            "endingThree"
+            "endingLine3"
         );
 
-    const endingName =
+    const name =
         document.getElementById(
             "endingName"
         );
 
-    const endingFinal =
+    const final =
         document.getElementById(
             "endingFinal"
         );
 
 
-    let endingAnimationStarted =
-        false;
-
-
-    function startEndingAnimation() {
-
-        if (
-            endingAnimationStarted
-        ) {
-            return;
-        }
-
-
-        endingAnimationStarted =
-            true;
-
-
-        endingContent.classList.add(
-            "animate"
-        );
-
-
-        /*
-         * Kalimat pertama
-         */
-
-        setTimeout(() => {
-
-            endingOne.classList.add(
-                "visible"
-            );
-
-        }, 500);
-
-
-        /*
-         * Kalimat kedua
-         */
-
-        setTimeout(() => {
-
-            endingTwo.classList.add(
-                "visible"
-            );
-
-        }, 1900);
-
-
-        /*
-         * Kalimat ketiga
-         */
-
-        setTimeout(() => {
-
-            endingThree.classList.add(
-                "visible"
-            );
-
-        }, 3300);
-
-
-        /*
-         * Nama Azka
-         */
-
-        setTimeout(() => {
-
-            endingName.classList.add(
-                "visible"
-            );
-
-        }, 4800);
-
-
-        /*
-         * Tulisan terakhir
-         */
-
-        setTimeout(() => {
-
-            endingFinal.classList.add(
-                "visible"
-            );
-
-        }, 6500);
-
-    }
-
-
-    function resetEndingAnimation() {
-
-        endingAnimationStarted =
-            false;
-
-
-        endingContent.classList.remove(
-            "animate"
-        );
-
-
-        endingOne.classList.remove(
-            "visible"
-        );
-
-
-        endingTwo.classList.remove(
-            "visible"
-        );
-
-
-        endingThree.classList.remove(
-            "visible"
-        );
-
-
-        endingName.classList.remove(
-            "visible"
-        );
-
-
-        endingFinal.classList.remove(
-            "visible"
-        );
-
-    }
-
-
-    /* =====================================
-       UPDATE COUNTER SAAT KEMBALI
-    ====================================== */
-
-    document.addEventListener(
-        "visibilitychange",
+    setTimeout(
         () => {
+            line1.classList.add(
+                "show"
+            );
+        },
+        400
+    );
 
-            if (
-                document.hidden
-            ) {
-                return;
+
+    setTimeout(
+        () => {
+            line2.classList.add(
+                "show"
+            );
+        },
+        1700
+    );
+
+
+    setTimeout(
+        () => {
+            line3.classList.add(
+                "show"
+            );
+        },
+        3100
+    );
+
+
+    setTimeout(
+        () => {
+            name.classList.add(
+                "show"
+            );
+        },
+        4600
+    );
+
+
+    setTimeout(
+        () => {
+            final.classList.add(
+                "show"
+            );
+        },
+        5900
+    );
+
+}
+
+
+/* =========================================================
+   QUIZ DATA
+========================================================= */
+
+const quizData = [
+
+    {
+        question:
+            "Siapa dari kita yang suka duluan?",
+
+        options: [
+
+            {
+                text:
+                    "Aku",
+
+                response:
+                    "Tuh kan, emang kamu duluan yang suka. Sudah kuduga. 😌❤️"
+            },
+
+            {
+                text:
+                    "Kamu",
+
+                response:
+                    "Masak sih aku duluan?? Bukannya kamu? Coba deh diingat-ingat lagi. 😭"
             }
 
+        ]
 
-            updateCounter();
+    },
+
+
+    {
+        question:
+            "Siapa yang coba mendekat duluan?",
+
+        options: [
+
+            {
+                text:
+                    "Kamu",
+
+                response:
+                    "Masak sih, aku mendekat. Nggak ada deh kayaknya. 😭"
+            },
+
+            {
+                text:
+                    "Aku",
+
+                response:
+                    "Masak sih? Kok aku nggak nyadar? 👀"
+            },
+
+            {
+                text:
+                    "Nggak ada, sama-sama gengsi",
+
+                response:
+                    "Tuh kan, padahal sama-sama ada rasa, loh. Entah kenapa waktu itu nggak ada yang berani mendekat duluan. Sama-sama gengsi ternyata. 😭❤️"
+            }
+
+        ]
+
+    },
+
+
+    {
+        question:
+            "Siapa yang punya ide duluan buat mengungkapkan perasaannya?",
+
+        options: [
+
+            {
+                text:
+                    "Aku",
+
+                response:
+                    "Berani banget sih kamu, asliii. 😭❤️ Untung waktu itu ada yang akhirnya berani mulai."
+            },
+
+            {
+                text:
+                    "Kamu",
+
+                response:
+                    "Bukannya kamu yang bilang duluan? 👀 Jangan-jangan sekarang mulai lupa sama ceritanya sendiri."
+            }
+
+        ]
+
+    },
+
+
+    {
+        question:
+            "Apa yang paling kamu harapkan dari aku di umurmu yang baru?",
+
+        options: [
+
+            {
+                text:
+                    "Lebih perhatian",
+
+                response:
+                    "Hehe, aku catat. Semoga aku bisa lebih peka dan lebih perhatian sama kamu, bukan cuma saat kamu memintanya. ❤️"
+            },
+
+            {
+                text:
+                    "Lebih bisa buat aku ngerasa ditemenin",
+
+                response:
+                    "Semoga ke depannya aku bisa jadi seseorang yang bikin kamu merasa ditemani, bahkan di hari-hari yang nggak selalu mudah. 💙"
+            },
+
+            {
+                text:
+                    "Bisa jadi tempat cerita",
+
+                response:
+                    "Kalau kamu butuh tempat buat cerita, semoga aku bisa jadi salah satu tempat yang selalu terasa nyaman buat kamu. Cerita apa pun, kapan pun. ❤️"
+            },
+
+            {
+                text:
+                    "Semuanya ❤️",
+
+                response:
+                    "Waduh, semuanya diminta. 😭❤️ Tapi justru itu yang ingin aku usahakan. Semoga aku bisa lebih perhatian, lebih hadir, dan bisa jadi tempat kamu cerita tanpa harus merasa sendirian."
+            }
+
+        ]
+
+    },
+
+
+    {
+        question:
+            "Di ulang tahunmu berikutnya, kamu berharap...",
+
+        options: [
+
+            {
+                text:
+                    "Masih bisa merayakannya dengan orang-orang tersayang",
+
+                response:
+                    "Semoga tahun depan kamu masih dikelilingi orang-orang yang sayang sama kamu, dan ulang tahunmu kembali dipenuhi hal-hal sederhana yang bikin kamu bahagia. ❤️"
+            },
+
+            {
+                text:
+                    "Banyak hal baik terjadi",
+
+                response:
+                    "Aamiin. Semoga sebelum ulang tahunmu berikutnya, banyak hal baik datang ke hidupmu dan banyak hal yang kamu harapkan perlahan jadi nyata. 💙"
+            },
+
+            {
+                text:
+                    "Kita punya lebih banyak cerita",
+
+                response:
+                    "Aku juga berharap begitu. Semoga dari sekarang sampai ulang tahunmu berikutnya, kita punya banyak cerita baru yang suatu hari nanti bisa kita ingat sambil tersenyum. ❤️"
+            },
+
+            {
+                text:
+                    "Semua itu ❤️",
+
+                response:
+                    "Semoga setelah ini kita punya lebih banyak hal baik untuk disyukuri dan lebih banyak cerita baru untuk dikenang. Mungkin sekarang aku masih sering gengsi dan kadang nggak tahu harus mulai dari mana... tapi semoga ke depannya aku bisa lebih berani, lebih terbuka, dan nggak terlalu gengsi lagi. Siapa tahu, ulang tahunmu berikutnya kita sudah punya cerita yang jauh lebih banyak dari hari ini. ❤️"
+            }
+
+        ]
+
+    },
+
+
+    {
+        question:
+            "Kalau boleh memilih satu hal untuk kita lakukan sebelum ulang tahunmu berikutnya...",
+
+        options: [
+
+            {
+                text:
+                    "Pergi ke suatu tempat",
+
+                response:
+                    "Boleh banget. Semoga sebelum ulang tahunmu berikutnya kita bisa menemukan satu tempat yang nantinya punya cerita tersendiri buat kita. 🌙"
+            },
+
+            {
+                text:
+                    "Membuat banyak kenangan",
+
+                response:
+                    "Semoga kita punya banyak kesempatan untuk membuat kenangan baru. Nggak harus sesuatu yang besar, yang penting nanti ada banyak hal kecil yang bisa kita ingat. ❤️"
+            },
+
+            {
+                text:
+                    "Foto bersama",
+
+                response:
+                    "Nah, ini juga salah satu yang aku tunggu. 😭 Semoga sebelum ulang tahunmu berikutnya, halaman foto kita sudah punya satu foto yang benar-benar kita punya bersama."
+            },
+
+            {
+                text:
+                    "Semuanya kalau bisa 😭❤️",
+
+                response:
+                    "Nah ini baru jawaban yang benar. 😭❤️ Kalau bisa semuanya, kenapa harus pilih satu? Semoga sebelum ulang tahunmu berikutnya kita bisa pergi bersama, punya banyak cerita, dan akhirnya punya foto berdua yang bisa kita simpan sebagai bagian dari perjalanan kita."
+            }
+
+        ]
+
+    },
+
+
+    {
+        question:
+            "Pertanyaan terakhir: di umurmu yang baru, kamu masih mau aku ada di sampingmu?",
+
+        options: [
+
+            {
+                text:
+                    "Iya ❤️",
+
+                response:
+                    "Hehe... aku senang dengarnya. Semoga aku juga masih bisa jadi seseorang yang menemani banyak cerita di umurmu yang baru. ❤️"
+            },
+
+            {
+                text:
+                    "Jelas iya",
+
+                response:
+                    "Jawabannya tegas banget. 😭❤️ Kalau begitu, semoga kita sama-sama menjaga apa yang sudah kita mulai."
+            },
+
+            {
+                text:
+                    "Selama kamu nggak pergi",
+
+                response:
+                    "Aku nggak bisa menjanjikan semuanya akan selalu sempurna, tapi aku bisa berusaha untuk tetap ada dan menjaga apa yang berarti buat kita. ❤️"
+            },
+
+            {
+                text:
+                    "IYA, NGGAK USAH NANYA 😭❤️",
+
+                response:
+                    "OKEEE, NGGAK NANYA LAGI 😭❤️ Kalau begitu, semoga di umurmu yang baru ini kita masih bisa saling menemani, saling cerita, saling belajar, dan tentunya punya jauh lebih banyak cerita untuk ditulis di halaman berikutnya. Mungkin sekarang kita masih sama-sama gengsi, kadang bingung siapa yang harus mulai duluan... tapi semoga nanti kita bisa lebih berani menunjukkan apa yang sebenarnya kita rasakan. Untuk sekarang, satu hal yang aku tahu: aku senang pernah menjadi bagian dari cerita kamu. 💙"
+            }
+
+        ]
+
+    }
+
+];
+
+
+/* =========================================================
+   QUIZ ELEMENTS
+========================================================= */
+
+const quizNumber =
+    document.getElementById(
+        "quizNumber"
+    );
+
+const quizProgress =
+    document.getElementById(
+        "quizProgress"
+    );
+
+const quizQuestion =
+    document.getElementById(
+        "quizQuestion"
+    );
+
+const quizOptions =
+    document.getElementById(
+        "quizOptions"
+    );
+
+const quizResponse =
+    document.getElementById(
+        "quizResponse"
+    );
+
+const responseText =
+    document.getElementById(
+        "responseText"
+    );
+
+const nextQuestion =
+    document.getElementById(
+        "nextQuestion"
+    );
+
+const quizComplete =
+    document.getElementById(
+        "quizComplete"
+    );
+
+const quizQuestionArea =
+    document.getElementById(
+        "quizQuestionArea"
+    );
+
+const restartQuiz =
+    document.getElementById(
+        "restartQuiz"
+    );
+
+const finishQuiz =
+    document.getElementById(
+        "finishQuiz"
+    );
+
+
+let quizIndex = 0;
+
+let quizAnswered = false;
+
+
+/* =========================================================
+   LOAD QUIZ
+========================================================= */
+
+function loadQuiz() {
+
+    quizAnswered = false;
+
+    const current =
+        quizData[quizIndex];
+
+    quizNumber.textContent =
+        String(
+            quizIndex + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const progress =
+        (
+            (quizIndex + 1) /
+            quizData.length
+        ) * 100;
+
+    quizProgress.style.width =
+        `${progress}%`;
+
+    quizQuestion.textContent =
+        current.question;
+
+    quizOptions.innerHTML =
+        "";
+
+    quizResponse.classList.add(
+        "hidden"
+    );
+
+    responseText.textContent =
+        "";
+
+    current.options.forEach(
+        (option, index) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.type =
+                "button";
+
+            button.className =
+                "quiz-option";
+
+            button.innerHTML = `
+
+                <span class="option-letter">
+                    ${String.fromCharCode(65 + index)}
+                </span>
+
+                <span class="option-text">
+                    ${option.text}
+                </span>
+
+            `;
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    selectQuizAnswer(
+                        button,
+                        option.response
+                    );
+
+                }
+            );
+
+            quizOptions.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SELECT QUIZ ANSWER
+========================================================= */
+
+function selectQuizAnswer(
+    selectedButton,
+    response
+) {
+
+    if (quizAnswered) {
+        return;
+    }
+
+    quizAnswered = true;
+
+
+    const allOptions =
+        quizOptions.querySelectorAll(
+            ".quiz-option"
+        );
+
+    allOptions.forEach(
+        (button) => {
+
+            button.classList.add(
+                "disabled"
+            );
 
         }
     );
 
 
-    /* =====================================
-       FINISH
-    ====================================== */
+    selectedButton.classList.add(
+        "selected"
+    );
 
-});
+
+    responseText.textContent =
+        response;
+
+
+    setTimeout(
+        () => {
+
+            quizResponse.classList.remove(
+                "hidden"
+            );
+
+            quizResponse.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+
+        },
+        350
+    );
+
+
+    if (
+        quizIndex ===
+        quizData.length - 1
+    ) {
+
+        nextQuestion.textContent =
+            "Selesai 💙";
+
+    } else {
+
+        nextQuestion.textContent =
+            "Lanjut →";
+
+    }
+
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+nextQuestion.addEventListener(
+    "click",
+    () => {
+
+        if (!quizAnswered) {
+            return;
+        }
+
+        if (
+            quizIndex >=
+            quizData.length - 1
+        ) {
+
+            quizQuestionArea.classList.add(
+                "hidden"
+            );
+
+            quizComplete.classList.remove(
+                "hidden"
+            );
+
+            quizComplete.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return;
+        }
+
+
+        quizIndex++;
+
+        loadQuiz();
+
+        quizQuestionArea.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   RESTART QUIZ
+========================================================= */
+
+restartQuiz.addEventListener(
+    "click",
+    () => {
+
+        quizIndex = 0;
+
+        quizComplete.classList.add(
+            "hidden"
+        );
+
+        quizQuestionArea.classList.remove(
+            "hidden"
+        );
+
+        loadQuiz();
+
+        quizQuestionArea.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   FINISH QUIZ
+========================================================= */
+
+finishQuiz.addEventListener(
+    "click",
+    () => {
+
+        quizComplete.classList.add(
+            "hidden"
+        );
+
+        quizQuestionArea.classList.remove(
+            "hidden"
+        );
+
+        quizIndex = 0;
+
+        loadQuiz();
+
+        showMenu();
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE QUIZ
+========================================================= */
+
+loadQuiz();
+
+
+/* =========================================================
+   RESET SPECIAL SECTIONS WHEN REOPENED
+========================================================= */
+
+const surpriseSection =
+    document.getElementById(
+        "surpriseSection"
+    );
+
+const quizSection =
+    document.getElementById(
+        "quizSection"
+    );
+
+
+/*
+   Saat menu dibuka kembali,
+   kita biarkan progress kuis tetap ada.
+   Surprise juga tetap terbuka setelah dibuka.
+*/
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL AUDIO CONTINUE
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        if (
+            document.hidden &&
+            !audioPlayer.paused
+        ) {
+
+            audioPlayer.pause();
+
+            updateMusicCards();
+
+        }
+
+    }
+);
