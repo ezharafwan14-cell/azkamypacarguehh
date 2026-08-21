@@ -2,21 +2,27 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#05070c">
-    <meta name="description" content="A little birthday website made especially for Azka.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>For Azka — A Birthday Chapter</title>
+    <meta
+        name="description"
+        content="Midnight Bloom — sebuah ruang kecil berisi ucapan, kenangan, musik, kejutan, dan cerita tentang kita."
+    >
+
+    <title>Midnight Bloom</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================================
-         BACKGROUND EFFECTS
-    ========================================== -->
+    <!-- =====================================================
+         BACKGROUND EFFECT
+    ====================================================== -->
 
     <div class="background-glow glow-one"></div>
     <div class="background-glow glow-two"></div>
@@ -24,26 +30,34 @@
 
     <div id="particles"></div>
 
-    <div class="mouse-glow"></div>
+    <div id="mouseGlow"></div>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          OPENING SCREEN
-    ========================================== -->
+    ====================================================== -->
 
-    <section id="opening" class="opening-screen">
+    <section id="openingScreen" class="opening-screen">
 
         <div class="opening-content">
 
-            <div class="opening-name">
+            <span class="opening-mini">
+                A little world made just for you
+            </span>
+
+            <h1 class="opening-name">
                 Azka
-            </div>
+            </h1>
 
             <p class="opening-subtitle">
                 A little something made just for you.
             </p>
 
-            <button id="startButton" class="primary-button">
+            <button
+                id="startButton"
+                class="primary-button"
+                type="button"
+            >
                 Mulai <span>→</span>
             </button>
 
@@ -52,47 +66,49 @@
     </section>
 
 
-    <!-- =========================================
+    <!-- =====================================================
          MAIN WEBSITE
-    ========================================== -->
+    ====================================================== -->
 
-    <main id="mainContent" class="main-content">
+    <main id="mainWebsite" class="website hidden">
 
 
-        <!-- =====================================
+        <!-- =================================================
              HERO
-        ====================================== -->
+        ================================================== -->
 
-        <section class="hero section">
+        <section id="home" class="hero-section">
 
             <div class="hero-content">
 
-                <p class="eyebrow">
+                <span class="eyebrow">
                     A Birthday Chapter
-                </p>
+                </span>
 
                 <h1>
-                    For the Girl I'm
-                    <span>Grateful For</span>
+                    For the Girl<br>
+                    I'm Grateful For
                 </h1>
 
-                <p class="hero-description">
+                <p class="hero-meaning">
+                    Untuk Perempuan yang Aku Syukuri Kehadirannya
+                </p>
+
+                <p class="hero-subtitle">
                     Today is about celebrating you.
                 </p>
 
                 <div class="hero-line"></div>
 
-                <div class="date-container">
-
-                    <p class="birthday-date">
-                        3 SEPTEMBER 2010 — 3 SEPTEMBER 2026
-                    </p>
-
-                    <p class="date-caption">
-                        Every second has been part of your story.
-                    </p>
-
+                <div class="birthday-date">
+                    3 SEPTEMBER 2010
+                    <span>—</span>
+                    3 SEPTEMBER 2026
                 </div>
+
+                <p class="date-description">
+                    Every second has been part of your story.
+                </p>
 
 
                 <!-- COUNTER -->
@@ -103,7 +119,10 @@
                         Since 3 September 2010
                     </p>
 
-                    <div class="counter-grid">
+                    <div
+                        id="birthdayCounter"
+                        class="counter-grid"
+                    >
 
                         <div class="counter-box">
                             <strong id="years">0</strong>
@@ -144,21 +163,23 @@
         </section>
 
 
-        <!-- =====================================
-             MENU
-        ====================================== -->
+        <!-- =================================================
+             MAIN MENU
+        ================================================== -->
 
-        <section id="menuSection" class="menu-section section">
+        <section
+            id="menuSection"
+            class="menu-section"
+        >
 
             <div class="section-heading">
 
-                <p class="eyebrow">
+                <span class="eyebrow">
                     A Little Collection
-                </p>
+                </span>
 
                 <h2>
-                    A Few Things I Made
-                    <span>For You</span>
+                    A Few Things I Made For You
                 </h2>
 
                 <p>
@@ -175,25 +196,24 @@
                 <button
                     class="menu-card"
                     data-target="messageSection"
+                    type="button"
                 >
 
                     <div class="menu-icon">
                         ♡
                     </div>
 
-                    <div class="menu-number">
-                        01
+                    <div class="menu-card-text">
+                        <h3>
+                            Ucapan Untukmu
+                        </h3>
+
+                        <p>
+                            Words I wanted you to hear.
+                        </p>
                     </div>
 
-                    <h3>
-                        Ucapan Untukmu
-                    </h3>
-
-                    <p>
-                        Words I wanted you to hear.
-                    </p>
-
-                    <span class="card-arrow">
+                    <span class="menu-arrow">
                         →
                     </span>
 
@@ -205,25 +225,24 @@
                 <button
                     class="menu-card"
                     data-target="photoSection"
+                    type="button"
                 >
 
                     <div class="menu-icon">
                         ◇
                     </div>
 
-                    <div class="menu-number">
-                        02
+                    <div class="menu-card-text">
+                        <h3>
+                            A Moment Worth Keeping
+                        </h3>
+
+                        <p>
+                            One picture, one little memory.
+                        </p>
                     </div>
 
-                    <h3>
-                        A Moment Worth Keeping
-                    </h3>
-
-                    <p>
-                        One picture, one little memory.
-                    </p>
-
-                    <span class="card-arrow">
+                    <span class="menu-arrow">
                         →
                     </span>
 
@@ -235,25 +254,24 @@
                 <button
                     class="menu-card"
                     data-target="littleThingsSection"
+                    type="button"
                 >
 
                     <div class="menu-icon">
                         ✦
                     </div>
 
-                    <div class="menu-number">
-                        03
+                    <div class="menu-card-text">
+                        <h3>
+                            10 Hal Kecil
+                        </h3>
+
+                        <p>
+                            Sepuluh hal yang ingin kusampaikan.
+                        </p>
                     </div>
 
-                    <h3>
-                        10 Little Things
-                    </h3>
-
-                    <p>
-                        Ten things I want you to know.
-                    </p>
-
-                    <span class="card-arrow">
+                    <span class="menu-arrow">
                         →
                     </span>
 
@@ -264,26 +282,25 @@
 
                 <button
                     class="menu-card"
-                    data-target="songsSection"
+                    data-target="musicSection"
+                    type="button"
                 >
 
                     <div class="menu-icon">
                         ♪
                     </div>
 
-                    <div class="menu-number">
-                        04
+                    <div class="menu-card-text">
+                        <h3>
+                            Our Songs
+                        </h3>
+
+                        <p>
+                            Songs that remind me of you.
+                        </p>
                     </div>
 
-                    <h3>
-                        Our Songs
-                    </h3>
-
-                    <p>
-                        Songs that remind me of you.
-                    </p>
-
-                    <span class="card-arrow">
+                    <span class="menu-arrow">
                         →
                     </span>
 
@@ -295,25 +312,24 @@
                 <button
                     class="menu-card"
                     data-target="surpriseSection"
+                    type="button"
                 >
 
                     <div class="menu-icon">
-                        ♢
+                        ✧
                     </div>
 
-                    <div class="menu-number">
-                        05
+                    <div class="menu-card-text">
+                        <h3>
+                            Sebuah Kejutan
+                        </h3>
+
+                        <p>
+                            Something is waiting for you.
+                        </p>
                     </div>
 
-                    <h3>
-                        Sebuah Kejutan
-                    </h3>
-
-                    <p>
-                        Something is waiting for you.
-                    </p>
-
-                    <span class="card-arrow">
+                    <span class="menu-arrow">
                         →
                     </span>
 
@@ -325,25 +341,53 @@
                 <button
                     class="menu-card"
                     data-target="endingSection"
+                    type="button"
                 >
 
                     <div class="menu-icon">
                         ∞
                     </div>
 
-                    <div class="menu-number">
-                        06
+                    <div class="menu-card-text">
+                        <h3>
+                            Akhir Perjalanan
+                        </h3>
+
+                        <p>
+                            Before you go...
+                        </p>
                     </div>
 
-                    <h3>
-                        Akhir Perjalanan
-                    </h3>
+                    <span class="menu-arrow">
+                        →
+                    </span>
 
-                    <p>
-                        Before you go...
-                    </p>
+                </button>
 
-                    <span class="card-arrow">
+
+                <!-- MENU 7 -->
+
+                <button
+                    class="menu-card special-menu-card"
+                    data-target="quizSection"
+                    type="button"
+                >
+
+                    <div class="menu-icon">
+                        ♡
+                    </div>
+
+                    <div class="menu-card-text">
+                        <h3>
+                            Tentang Kita
+                        </h3>
+
+                        <p>
+                            Seberapa ingat kamu dengan cerita kecil kita?
+                        </p>
+                    </div>
+
+                    <span class="menu-arrow">
                         →
                     </span>
 
@@ -354,165 +398,156 @@
         </section>
 
 
-        <!-- =====================================
-             MENU 1 — MESSAGE
-        ====================================== -->
+        <!-- =================================================
+             SECTION 1 — UCAPAN
+        ================================================== -->
 
         <section
             id="messageSection"
-            class="content-section hidden-section"
+            class="content-section"
         >
 
-            <div class="content-container">
+            <div class="content-card message-card">
 
-                <button class="back-button">
+                <button
+                    class="back-button"
+                    type="button"
+                >
                     ← Kembali
                 </button>
 
-                <div class="content-heading">
+                <span class="eyebrow">
+                    Words For You
+                </span>
 
-                    <p class="eyebrow">
-                        A Message For You
-                    </p>
+                <h2>
+                    Ucapan Untukmu
+                </h2>
 
-                    <h2>
-                        Ucapan <span>Untukmu</span>
-                    </h2>
+                <p class="section-subtitle">
+                    Words I wanted you to hear.
+                </p>
 
-                    <p>
-                        Words I wanted you to hear.
-                    </p>
+                <div class="message-divider"></div>
 
-                </div>
-
-
-                <article class="glass-letter">
+                <div class="long-message">
 
                     <p>
-                        Happy Birthday, Azka.
+                        Selamat ulang tahun, Azka. 💙
                     </p>
 
                     <p>
-                        Hari ini mungkin terlihat seperti satu tanggal
-                        biasa yang datang setiap tahun. Tapi sebenarnya,
-                        hari ini adalah pengingat bahwa satu tahun lagi
-                        telah menjadi bagian dari perjalanan hidupmu.
+                        Hari ini bukan hanya tentang bertambahnya satu
+                        angka dalam usiamu. Lebih dari itu, hari ini adalah
+                        tentang merayakan perjalananmu sampai sejauh ini,
+                        semua hal yang sudah kamu lewati, semua hal yang
+                        sudah kamu pelajari, dan semua cerita yang masih
+                        menunggumu di depan.
                     </p>
 
                     <p>
-                        Bertambahnya usia bukan hanya tentang angka yang
-                        berubah. Ada begitu banyak hal yang sudah kamu
-                        lewati, hal-hal yang mungkin tidak semuanya mudah,
-                        dan begitu banyak cerita yang akhirnya membentuk
-                        dirimu menjadi seseorang yang sekarang.
-                    </p>
-
-                    <p>
-                        Di tahun yang baru ini, aku berharap banyak hal baik
-                        datang kepadamu. Semoga hal-hal yang sedang kamu
-                        perjuangkan perlahan menemukan jalannya. Semoga
-                        cita-cita yang kamu punya tidak hanya menjadi
-                        angan-angan, tetapi satu per satu bisa menjadi
-                        sesuatu yang benar-benar kamu capai.
+                        Di umurmu yang baru ini, aku berharap banyak hal
+                        baik datang ke hidupmu. Semoga cita-cita yang
+                        sedang kamu kejar perlahan menemukan jalannya.
+                        Semoga setiap usaha yang kamu lakukan tidak
+                        pernah terasa sia-sia.
                     </p>
 
                     <p>
                         Aku juga berharap kamu selalu punya alasan untuk
-                        tersenyum. Bahkan di hari-hari yang terasa berat,
-                        semoga selalu ada seseorang, sesuatu, atau sebuah
-                        kejadian kecil yang bisa mengingatkanmu bahwa masih
-                        banyak hal baik yang menunggumu.
+                        tersenyum. Bahkan di hari-hari ketika semuanya
+                        terasa sedikit berat, semoga selalu ada seseorang,
+                        sesuatu, atau bahkan hal kecil yang bisa membuatmu
+                        merasa bahwa semuanya akan baik-baik saja.
                     </p>
 
                     <p>
                         Semoga kamu selalu dikelilingi orang-orang yang
-                        mendukungmu, menghargaimu, dan bisa melihat hal-hal
-                        baik dalam dirimu bahkan ketika kamu sendiri sedang
-                        sulit melihatnya.
+                        benar-benar mendukungmu, menghargaimu, dan ingin
+                        melihatmu tumbuh menjadi versi dirimu yang paling
+                        kamu inginkan.
                     </p>
 
                     <p>
-                        Dan terima kasih untuk hal-hal kecil yang pernah
+                        Dan terima kasih untuk semua hal kecil yang pernah
                         kamu berikan. Mungkin beberapa di antaranya terlihat
                         sederhana, tetapi tetap punya tempat tersendiri
-                        dalam ingatanku.
+                        buatku.
                     </p>
 
                     <p>
-                        Aku mungkin tidak selalu pandai mengungkapkan apa
-                        yang aku rasakan secara langsung. Kadang ada banyak
-                        hal yang ingin disampaikan tetapi sulit menemukan
-                        kata-kata yang tepat.
+                        Aku mungkin bukan orang yang selalu pandai
+                        mengungkapkan apa yang aku rasakan secara langsung.
+                        Kadang ada banyak hal yang ingin dikatakan tetapi
+                        akhirnya hanya tersimpan karena bingung bagaimana
+                        cara mengatakannya.
                     </p>
 
                     <p>
-                        Jadi, mungkin website kecil ini adalah caraku untuk
-                        menyampaikannya.
+                        Karena itu aku membuat tempat kecil ini.
+                        Bukan karena aku punya kata-kata yang sempurna,
+                        tetapi karena aku ingin mencoba menyampaikan
+                        beberapa hal yang mungkin sulit aku katakan
+                        secara langsung.
                     </p>
 
                     <p>
-                        Aku berharap tahun ini menjadi awal dari banyak hal
-                        indah dalam hidupmu. Lebih banyak pengalaman baru,
-                        lebih banyak tawa, lebih banyak pencapaian, dan
-                        lebih banyak alasan untuk bangga pada dirimu sendiri.
+                        Semoga umurmu yang baru menjadi awal dari banyak
+                        hal indah. Semoga ada lebih banyak kesempatan untuk
+                        tertawa, belajar, mencoba hal baru, mengejar mimpi,
+                        dan membuat cerita yang suatu hari nanti bisa kita
+                        ingat kembali.
                     </p>
 
                     <p>
-                        Yang paling penting, semoga kamu selalu bahagia
-                        menjadi dirimu sendiri. Tidak perlu menjadi seperti
-                        orang lain untuk menjadi seseorang yang berharga.
+                        Dan yang paling penting, semoga kamu selalu bahagia
+                        menjadi dirimu sendiri.
                     </p>
 
-                    <p>
-                        Tetaplah menjadi Azka yang kamu kenal.
-                    </p>
-
-                    <p class="letter-ending">
+                    <p class="message-ending">
                         Happy Birthday, Azka. 💙
                     </p>
 
-                </article>
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- =====================================
-             MENU 2 — PHOTO
-        ====================================== -->
+        <!-- =================================================
+             SECTION 2 — FOTO
+        ================================================== -->
 
         <section
             id="photoSection"
-            class="content-section hidden-section"
+            class="content-section"
         >
 
-            <div class="content-container">
+            <div class="content-card photo-card">
 
-                <button class="back-button">
+                <button
+                    class="back-button"
+                    type="button"
+                >
                     ← Kembali
                 </button>
 
-                <div class="content-heading">
+                <span class="eyebrow">
+                    A Little Memory
+                </span>
 
-                    <p class="eyebrow">
-                        One Little Memory
-                    </p>
+                <h2>
+                    A Moment Worth Keeping
+                </h2>
 
-                    <h2>
-                        A Moment Worth <span>Keeping</span>
-                    </h2>
+                <p class="indonesian-title">
+                    Sebuah Momen yang Layak Disimpan
+                </p>
 
-                    <p>
-                        Sebuah momen yang layak disimpan.
-                    </p>
+                <div class="photo-frame">
 
-                </div>
-
-
-                <div class="photo-wrapper">
-
-                    <div class="photo-frame">
+                    <div class="photo-inner">
 
                         <img
                             src="images/azka.jpg"
@@ -521,57 +556,56 @@
 
                     </div>
 
-                    <div class="photo-caption">
+                </div>
 
-                        <p>
-                            Mungkin sekarang kita memang belum mempunyai
-                            foto berdua yang bisa aku letakkan di halaman ini.
-                        </p>
+                <div class="photo-caption">
 
-                        <p>
-                            Mungkin foto itu belum sempat kita punya, atau
-                            mungkin memang waktunya belum sampai.
-                        </p>
+                    <p>
+                        Mungkin sekarang kita memang belum mempunyai
+                        foto berdua yang bisa aku letakkan di halaman ini.
+                    </p>
 
-                        <p>
-                            Tapi siapa tahu, saat ulang tahunmu tahun depan,
-                            foto yang ada di halaman ini bukan lagi foto kamu
-                            sendiri.
-                        </p>
+                    <p>
+                        Mungkin foto itu belum sempat kita punya,
+                        atau mungkin memang waktunya belum sampai.
+                    </p>
 
-                        <p>
-                            Mungkin saat itu, akan ada satu foto kita berdua
-                            yang akhirnya bisa mengisi tempat ini.
-                        </p>
+                    <p>
+                        Tapi siapa tahu, saat ulang tahunmu tahun depan,
+                        foto yang ada di halaman ini bukan lagi foto
+                        kamu sendiri.
+                    </p>
 
-                        <p>
-                            Jadi untuk sekarang, biarlah foto ini yang
-                            menemani halaman ini.
-                        </p>
+                    <p>
+                        Mungkin saat itu, akan ada satu foto kita berdua
+                        yang akhirnya bisa mengisi tempat ini.
+                    </p>
 
-                        <p>
-                            Foto pertama yang kamu berikan kepadaku. Sebuah
-                            foto yang mungkin sederhana, tapi tetap punya
-                            tempat tersendiri karena menjadi salah satu hal
-                            pertama yang kamu berikan kepadaku.
-                        </p>
+                    <p>
+                        Jadi untuk sekarang, biarlah foto ini yang
+                        menemani halaman ini.
+                    </p>
 
-                        <p>
-                            Aku ingin menyimpannya di sini sebagai bagian
-                            kecil dari cerita kita.
-                        </p>
+                    <p>
+                        Foto pertama yang kamu berikan kepadaku.
+                        Sebuah foto yang mungkin sederhana, tapi tetap
+                        punya tempat tersendiri karena menjadi salah satu
+                        hal pertama yang kamu berikan kepadaku.
+                    </p>
 
-                        <p>
-                            Untuk sekarang, satu foto ini cukup.
-                        </p>
+                    <p>
+                        Aku ingin menyimpannya di sini sebagai bagian
+                        kecil dari cerita kita.
+                    </p>
 
-                    </div>
+                    <p>
+                        Untuk sekarang, satu foto ini cukup.
+                    </p>
 
+                </div>
 
-                    <div class="photo-highlight">
-                        Maybe next year, we'll have our picture here. 💙
-                    </div>
-
+                <div class="photo-highlight">
+                    Maybe next year, we'll have our picture here. 💙
                 </div>
 
             </div>
@@ -579,123 +613,113 @@
         </section>
 
 
-        <!-- =====================================
-             MENU 3 — 10 LITTLE THINGS
-        ====================================== -->
+        <!-- =================================================
+             SECTION 3 — 10 LITTLE THINGS
+        ================================================== -->
 
         <section
             id="littleThingsSection"
-            class="content-section hidden-section"
+            class="content-section"
         >
 
-            <div class="content-container">
+            <div class="content-card little-things-card">
 
-                <button class="back-button">
+                <button
+                    class="back-button"
+                    type="button"
+                >
                     ← Kembali
                 </button>
 
-                <div class="content-heading">
+                <span class="eyebrow">
+                    Little Things
+                </span>
 
-                    <p class="eyebrow">
-                        A Small Reminder
-                    </p>
+                <h2>
+                    10 Hal Kecil
+                </h2>
 
-                    <h2>
-                        10 Little <span>Things</span>
-                    </h2>
+                <p class="section-subtitle">
+                    Sepuluh hal yang ingin kusampaikan.
+                </p>
 
-                    <p>
-                        Ten things I want you to know.
-                    </p>
-
+                <div class="little-counter">
+                    <span id="littleNumber">
+                        01
+                    </span>
+                    <span>
+                        / 10
+                    </span>
                 </div>
 
-
-                <div class="things-card">
-
-                    <div
-                        id="thingNumber"
-                        class="thing-number"
-                    >
-                        01 / 10
-                    </div>
-
-                    <div
-                        id="thingText"
-                        class="thing-text"
-                    >
-                        You deserve to be celebrated.
-                    </div>
-
-                    <button
-                        id="nextThingButton"
-                        class="primary-button"
-                    >
-                        Berikutnya →
-                    </button>
-
+                <div
+                    id="littleText"
+                    class="little-text"
+                >
+                    Kamu pantas untuk dirayakan.
                 </div>
+
+                <button
+                    id="nextLittleThing"
+                    class="primary-button"
+                    type="button"
+                >
+                    Berikutnya →
+                </button>
 
             </div>
 
         </section>
 
 
-        <!-- =====================================
-             MENU 4 — SONGS
-        ====================================== -->
+        <!-- =================================================
+             SECTION 4 — MUSIC
+        ================================================== -->
 
         <section
-            id="songsSection"
-            class="content-section hidden-section"
+            id="musicSection"
+            class="content-section"
         >
 
-            <div class="content-container">
+            <div class="content-card music-section-card">
 
-                <button class="back-button">
+                <button
+                    class="back-button"
+                    type="button"
+                >
                     ← Kembali
                 </button>
 
-                <div class="content-heading">
+                <span class="eyebrow">
+                    A Little Soundtrack
+                </span>
 
-                    <p class="eyebrow">
-                        A Little Soundtrack
-                    </p>
+                <h2>
+                    Our Songs
+                </h2>
 
-                    <h2>
-                        Our <span>Songs</span>
-                    </h2>
-
-                    <p>
-                        Songs that remind me of you.
-                    </p>
-
-                </div>
+                <p class="section-subtitle">
+                    Songs that remind me of you.
+                </p>
 
 
-                <div class="songs-container">
+                <div class="music-list">
 
 
                     <!-- SONG 1 -->
 
                     <div
-                        class="song-card"
-                        data-song="shape"
+                        class="music-card"
+                        data-song="0"
                     >
 
                         <div class="vinyl">
 
-                            <div class="vinyl-center">
-                                ♪
-                            </div>
+                            <div class="vinyl-center"></div>
 
                         </div>
 
-                        <div class="song-info">
-
-                            <span class="song-label">
-                                SONG 01
-                            </span>
+                        <div class="music-info">
 
                             <h3>
                                 Shape of My Heart
@@ -709,7 +733,7 @@
 
                         <button
                             class="play-button"
-                            data-song="shape"
+                            type="button"
                             aria-label="Play Shape of My Heart"
                         >
                             ▶
@@ -721,23 +745,17 @@
                     <!-- SONG 2 -->
 
                     <div
-                        class="song-card"
-                        data-song="lay"
+                        class="music-card"
+                        data-song="1"
                     >
 
                         <div class="vinyl">
 
-                            <div class="vinyl-center">
-                                ♪
-                            </div>
+                            <div class="vinyl-center"></div>
 
                         </div>
 
-                        <div class="song-info">
-
-                            <span class="song-label">
-                                SONG 02
-                            </span>
+                        <div class="music-info">
 
                             <h3>
                                 I Lay My Love on You
@@ -751,7 +769,7 @@
 
                         <button
                             class="play-button"
-                            data-song="lay"
+                            type="button"
                             aria-label="Play I Lay My Love on You"
                         >
                             ▶
@@ -767,11 +785,9 @@
                     preload="metadata"
                 ></audio>
 
-                <p
-                    id="musicStatus"
-                    class="music-status"
-                >
-                    Choose a song.
+                <p class="music-note">
+                    Pastikan file musik berada di folder
+                    <strong>music/</strong>.
                 </p>
 
             </div>
@@ -779,80 +795,95 @@
         </section>
 
 
-        <!-- =====================================
-             MENU 5 — SURPRISE
-        ====================================== -->
+        <!-- =================================================
+             SECTION 5 — SURPRISE
+        ================================================== -->
 
         <section
             id="surpriseSection"
-            class="content-section hidden-section"
+            class="content-section surprise-section"
         >
 
-            <div class="content-container">
+            <div class="content-card surprise-card">
 
-                <button class="back-button">
+                <button
+                    class="back-button"
+                    type="button"
+                >
                     ← Kembali
                 </button>
 
-                <div class="content-heading">
+                <span class="eyebrow">
+                    Something For You
+                </span>
 
-                    <p class="eyebrow">
-                        Something Small
-                    </p>
+                <h2>
+                    Sebuah Kejutan
+                </h2>
 
-                    <h2>
-                        Sebuah <span>Kejutan</span>
-                    </h2>
+                <p class="section-subtitle">
+                    Something is waiting for you.
+                </p>
 
-                    <p>
-                        Something is waiting for you.
-                    </p>
 
-                </div>
-
+                <!-- FLOWER CANVAS -->
 
                 <div
-                    id="surpriseCard"
-                    class="surprise-card"
+                    id="flowerStage"
+                    class="flower-stage"
                 >
+
+                    <div class="flower-background-glow"></div>
+
+                    <div
+                        id="flowerContainer"
+                        class="flower-container"
+                    ></div>
 
                     <div
                         id="gift"
                         class="gift"
                     >
-                        🎁
+
+                        <div class="gift-box">
+                            🎁
+                        </div>
+
                     </div>
 
                     <button
-                        id="openGiftButton"
-                        class="primary-button"
+                        id="openGift"
+                        class="primary-button gift-button"
+                        type="button"
                     >
                         Open
                     </button>
 
+                </div>
 
-                    <div
-                        id="surpriseMessage"
-                        class="surprise-message"
-                    >
 
-                        <h3>
-                            Happy Birthday, Azka. 💙
-                        </h3>
+                <!-- SURPRISE MESSAGE -->
 
-                        <p>
-                            I hope this year gives you more reasons to smile,
-                            more moments worth remembering, and more dreams
-                            that slowly become reality.
-                        </p>
+                <div
+                    id="surpriseMessage"
+                    class="surprise-message hidden"
+                >
 
-                        <p>
-                            And if one day you come back to this little
-                            website again, I hope you can look at it and
-                            remember this birthday with a smile.
-                        </p>
+                    <h3>
+                        Happy Birthday, Azka. 💙
+                    </h3>
 
-                    </div>
+                    <p>
+                        I hope this year gives you more reasons to smile,
+                        more moments worth remembering, and more dreams
+                        that slowly become reality.
+                    </p>
+
+                    <p>
+                        And if one day you come back to this little website
+                        again, I hope you can look at it and remember this
+                        birthday with a smile.
+                    </p>
 
                 </div>
 
@@ -861,42 +892,42 @@
         </section>
 
 
-        <!-- =====================================
-             MENU 6 — ENDING
-        ====================================== -->
+        <!-- =================================================
+             SECTION 6 — ENDING
+        ================================================== -->
 
         <section
             id="endingSection"
-            class="content-section ending-section hidden-section"
+            class="content-section ending-section"
         >
 
-            <div class="content-container ending-container">
+            <div class="content-card ending-card">
 
-                <button class="back-button ending-back">
+                <button
+                    class="back-button"
+                    type="button"
+                >
                     ← Kembali
                 </button>
 
-                <div
-                    id="endingContent"
-                    class="ending-content"
-                >
+                <div class="ending-content">
 
                     <p
-                        id="endingOne"
+                        id="endingLine1"
                         class="ending-line"
                     >
                         Before you go...
                     </p>
 
                     <p
-                        id="endingTwo"
+                        id="endingLine2"
                         class="ending-line"
                     >
                         If you ever come back to this little place...
                     </p>
 
                     <p
-                        id="endingThree"
+                        id="endingLine3"
                         class="ending-line"
                     >
                         I hope you remember how special today was.
@@ -923,16 +954,170 @@
         </section>
 
 
+        <!-- =================================================
+             SECTION 7 — TENTANG KITA
+        ================================================== -->
+
+        <section
+            id="quizSection"
+            class="content-section quiz-section"
+        >
+
+            <div class="content-card quiz-card">
+
+                <button
+                    class="back-button"
+                    type="button"
+                >
+                    ← Kembali
+                </button>
+
+                <span class="eyebrow">
+                    A Little Game
+                </span>
+
+                <h2>
+                    Tentang Kita
+                </h2>
+
+                <p class="quiz-intro">
+                    Seberapa ingat kamu dengan cerita kecil kita?
+                    Yuk, kita lihat. 👀
+                </p>
+
+                <div class="quiz-note">
+                    Psst... "Aku" dan "Kamu" di sini mengikuti
+                    sudut pandang kamu sebagai yang menjawab.
+                    Jadi, "Aku" = dirimu sendiri. 👀💙
+                </div>
+
+
+                <!-- QUIZ PROGRESS -->
+
+                <div class="quiz-progress-wrapper">
+
+                    <div class="quiz-progress-text">
+                        <span id="quizNumber">
+                            01
+                        </span>
+
+                        <span>
+                            / 07
+                        </span>
+                    </div>
+
+                    <div class="quiz-progress-bar">
+                        <div
+                            id="quizProgress"
+                            class="quiz-progress-fill"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION -->
+
+                <div
+                    id="quizQuestionArea"
+                    class="quiz-question-area"
+                >
+
+                    <h3
+                        id="quizQuestion"
+                        class="quiz-question"
+                    >
+                        Siapa dari kita yang suka duluan?
+                    </h3>
+
+
+                    <div
+                        id="quizOptions"
+                        class="quiz-options"
+                    ></div>
+
+
+                    <!-- RESPONSE -->
+
+                    <div
+                        id="quizResponse"
+                        class="quiz-response hidden"
+                    >
+
+                        <div class="response-line"></div>
+
+                        <p id="responseText"></p>
+
+                        <button
+                            id="nextQuestion"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Lanjut →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUIZ END -->
+
+                <div
+                    id="quizComplete"
+                    class="quiz-complete hidden"
+                >
+
+                    <div class="complete-icon">
+                        ♡
+                    </div>
+
+                    <h3>
+                        Sampai di akhir. 💙
+                    </h3>
+
+                    <p>
+                        Ternyata banyak juga cerita kecil yang
+                        bisa kita ingat kembali.
+                    </p>
+
+                    <p>
+                        Terima kasih sudah menjawab semuanya.
+                    </p>
+
+                    <button
+                        id="restartQuiz"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Ulangi Kuis
+                    </button>
+
+                    <button
+                        id="finishQuiz"
+                        class="primary-button"
+                        type="button"
+                    >
+                        Kembali ke Menu →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
         <!-- FOOTER -->
 
-        <footer class="footer">
+        <footer class="site-footer">
 
             <p>
-                Made with a little bit of time, thought, and care.
+                Midnight Bloom
             </p>
 
             <span>
-                © 2026
+                Made with a little thought & a lot of care. 💙
             </span>
 
         </footer>
